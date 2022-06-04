@@ -1,17 +1,150 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
+
   <head>
     <meta charset="utf-8" />
     <title>Documentation file</title>
+    <link href="styles.css" rel="stylesheet" />
   </head>
+
   <body>
-    <h1>Movies App</h1>
-    <p>
-      The main objective is to build the server-side component of a “movies” web
-      application. The web application will provide users with access to
-      information about different movies, directors, and genres. Users will be
-      able to sign up, update their personal information, and create a list of
-      their favorite movies.
-    </p>
+    <div class="main">
+      <h1>Movies App</h1>
+      <p>
+        The main objective is to build the server-side component of a “movies” web
+        application. The web application will provide users with access to
+        information about different movies, directors, and genres. Users will be
+        able to sign up, update their personal information, and create a list of
+        their favorite movies.
+      </p>
+    </div>
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>REQUEST</th>
+            <th>URL</th>
+            <th>HTTP Method</th>
+            <th>Request Data Format</th>
+            <th>Response Data Body Format</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Get a list of all movies</td>
+            <td>/movies</td>
+            <td>GET</td>
+            <td>none</td>
+            <td>A json object holding data about all movies</td>
+          </tr>
+          <tr>
+            <td>Get details of one movie</td>
+            <td>/movies/:title</td>
+            <td>GET</td>
+            <td>none</td>
+            <td>A json object holding data about one movie like: <br />
+              <pre>
+            {
+              'Description':'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.',
+              'Genre':{
+                'Name':'Crime',
+                'Description':'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.'
+              },
+              'Director':{
+                'Name':'Francis Ford Coppola',
+                'Bio':'Francis Ford Coppola was born in 1939 in Detroit, Michigan, but grew up in a New York suburb in a creative, supportive Italian-American family.',
+                'Birth':'1939'
+              },
+              'Title': 'The Godfather',
+              'ImageURL':'https://www.imdb.com/title/tt0068646/mediaviewer/rm746868224/?ref_=tt_ov_i',
+            }
+          </pre>
+            </td>
+          </tr>
+          <tr>
+            <td>Get data about genre </td>
+            <td>/movies/Genre/:genreName</td>
+            <td>GET</td>
+            <td>none</td>
+            <td>A json object holding data about required genre like:<br />
+            <pre>
+            {
+              'Name':'Crime',
+              'Description':'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.'
+            }
+          </pre>
+            </td>
+          </tr>
+          <tr>
+            <td>Get data about director </td>
+            <td>/movies/Directors/:directorName</td>
+            <td>GET</td>
+            <td>none</td>
+            <td>A json object holding data about required director like:<br />
+            <pre>
+            {
+              'Name':'Francis Ford Coppola',
+              'Bio':'Francis Ford Coppola was born in 1939 in Detroit, Michigan, but grew up in a New York suburb in a creative, supportive Italian-American family.',
+              'Birth':'1939'
+            }
+            </pre></td>
+          </tr>
+          <tr>
+            <td>Add a User</td>
+            <td>/users</td>
+            <td>POST</td>
+            <td>A json object holding data about user: <br />
+            <pre>
+            { “id” :1,
+              “name” : “Priya”,
+              “favMovies”:[]
+            }
+            </pre></td>
+            <td>A json object holding data about new User like:<br />
+            <pre>
+            { “id” :1,
+              “name” : “Priya”,
+              “favMovies”:[]
+            }
+          </pre></td>
+          </tr>
+          <tr>
+            <td>Update a user</td>
+            <td>/users/:id</td>
+            <td>PUT</td>
+            <td>none</td>
+            <td>A json object holding data about updated user like<br />
+            <pre>
+            {
+              "id":1,
+              "name" : "Munna",
+            }
+            </pre></td>
+          </tr>
+          <tr>
+            <td>Add a movie to the of favorites</td>
+            <td>/users/:id/:movieTitle</td>
+            <td>POST</td>
+            <td>none</td>
+            <td>A text message indicating the favmovie added to particular user</td>
+          </tr>
+          <tr>
+            <td>Delete a movie from list of favorites</td>
+            <td>/users/:id/:movieTitle</td>
+            <td>DELETE</td>
+            <td>none</td>
+            <td>A text message indicating the favmovie deleted from a particular user</td>
+          </tr>
+          <tr>
+            <td>Delete existing user  </td>
+            <td>/users/:id</td>
+            <td>DELETE</td>
+            <td>none</td>
+            <td>A text message indicating that a user have been deleted</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </body>
-</html>
+
+  </html>
