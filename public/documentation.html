@@ -25,6 +25,7 @@
             <th>REQUEST</th>
             <th>URL</th>
             <th>HTTP Method</th>
+            <th>Mongoose command</th>
             <th>Request Data Format</th>
             <th>Response Data Body Format</th>
           </tr>
@@ -34,6 +35,7 @@
             <td>Get a list of all movies</td>
             <td>/movies</td>
             <td>GET</td>
+            <td>find()</td>
             <td>none</td>
             <td>A json object holding data about all movies</td>
           </tr>
@@ -41,6 +43,7 @@
             <td>Get details of one movie</td>
             <td>/movies/:title</td>
             <td>GET</td>
+            <td>findOne()</td>
             <td>none</td>
             <td>A json object holding data about one movie like: <br />
               <pre>
@@ -65,6 +68,7 @@
             <td>Get data about genre </td>
             <td>/movies/Genre/:genreName</td>
             <td>GET</td>
+            <td>findOne()</td>
             <td>none</td>
             <td>A json object holding data about required genre like:<br />
             <pre>
@@ -79,6 +83,7 @@
             <td>Get data about director </td>
             <td>/movies/Directors/:directorName</td>
             <td>GET</td>
+            <td>findOne()</td>
             <td>none</td>
             <td>A json object holding data about required director like:<br />
             <pre>
@@ -93,31 +98,40 @@
             <td>Add a User</td>
             <td>/users</td>
             <td>POST</td>
+            <td>Create({})</td>
             <td>A json object holding data about user: <br />
             <pre>
             { “id” :1,
               “name” : “Priya”,
-              “favMovies”:[]
+              "password":"Priy.l99",
+              "email":"priyabc.12@gmail.com",
+              "birthday":"1992-05-12"
             }
             </pre></td>
             <td>A json object holding data about new User like:<br />
             <pre>
-            { “id” :1,
-              “name” : “Priya”,
-              “favMovies”:[]
-            }
+              { “id” :1,
+                “name” : “Priya”,
+                "password":"Priy.l99",
+                "email":"priyabc.12@gmail.com",
+                "birthday":"1992-05-12",
+                “favMovies”:[]
+              }
           </pre></td>
           </tr>
           <tr>
             <td>Update a user</td>
             <td>/users/:id</td>
             <td>PUT</td>
+            <td>findOneAndUpdate({},{$set:{}})</td>
             <td>none</td>
             <td>A json object holding data about updated user like<br />
             <pre>
             {
-              "id":1,
-              "name" : "Munna",
+              “name” : “Priyanka”,
+              "password":"Priy.l992",
+              "email":"priyabcd.12@gmail.com",
+              "birthday":"1992-05-12",
             }
             </pre></td>
           </tr>
@@ -125,6 +139,7 @@
             <td>Add a movie to the of favorites</td>
             <td>/users/:id/:movieTitle</td>
             <td>POST</td>
+            <td>findOneAndUpdate({},{$push:{}})</td>
             <td>none</td>
             <td>A text message indicating the favmovie added to particular user</td>
           </tr>
@@ -132,6 +147,7 @@
             <td>Delete a movie from list of favorites</td>
             <td>/users/:id/:movieTitle</td>
             <td>DELETE</td>
+            <td>findOneAndUpdate({},{$pull:{}})</td>
             <td>none</td>
             <td>A text message indicating the favmovie deleted from a particular user</td>
           </tr>
@@ -139,6 +155,7 @@
             <td>Delete existing user  </td>
             <td>/users/:id</td>
             <td>DELETE</td>
+            <td>findOneAndRemove({})</td>
             <td>none</td>
             <td>A text message indicating that a user have been deleted</td>
           </tr>
